@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Entity;
 using Assets.Scripts.Repository;
+using System;
 using System.Collections.Generic;
 
 namespace Assets.Scripts.Service
@@ -15,8 +16,9 @@ namespace Assets.Scripts.Service
             gameSaveRepository = new GameSaveRepository();
         }
 
-        public void Add(GameSave gameSave)
+        public void Add(string levelName)
         {
+            GameSave gameSave = new GameSave(levelName, DateTime.Now);
             gameSaveRepository.Add(gameSave);
             gameSaveRepository.ClearOldSaves(ALLOWED_SIZE);
         }
@@ -41,7 +43,8 @@ namespace Assets.Scripts.Service
         {
             string response = string.Empty;
             
-            List<GameSave> saves = GetAll();
+            List<GameSave> saves = GetAll(); 
+            saves.Reverse();
             response += $"Found {saves.Count} saves:\n";
             
             foreach (GameSave save in saves)

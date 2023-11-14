@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using Unity.VisualScripting.Dependencies.Sqlite;
 
 namespace Assets.Scripts.Entity
@@ -10,6 +9,12 @@ namespace Assets.Scripts.Entity
         public int Id { get; set; }
         public string LevelName { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        public GameSave(string levelName, DateTime createdAt)
+        {
+            LevelName = levelName;
+            CreatedAt = createdAt;
+        }
 
         public GameSave(int id, string levelName, DateTime createdAt)
         {

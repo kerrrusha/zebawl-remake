@@ -2,20 +2,40 @@
 using Assets.Scripts.Model;
 using Assets.Scripts.Service;
 using Assets.Scripts.Util;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public float deadlineHeight = 15;
+    public static GameController Instance;
+
+    public float deadlineHeight = 7;
     public Transform playerTransform;
 
     private GameSaveService gameSaveService;
     private LevelService levelService;
     private Level currentLevel;
 
+    public void FinishLevel()
+    {
+        try
+        {
+            currentLevel = levelService.FindNext(currentLevel);
+            gameSaveService.Add(currentLevel.name);
+        } 
+        catch (IndexOutOfRangeException e)
+        {
+            Debug.Log(e.Message);
+            return;
+        }
+        LoadCurrentScene();
+    }
+
     void Start()
     {
+        Instance = this;
+
         CommonUtil.CheckNotNull(playerTransform, nameof(playerTransform));
 
         levelService = new LevelService();
@@ -48,6 +68,14 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        
+        CheckGameOver();
+    }
+
+    private void CheckGameOver()
+    {
+        if (currentLevel.initialPlayerPosition.y - playerTransform.position.y > deadlineHeight)
+        {
+            playerTransform.position = currentLevel.initialPlayerPosition;
+        }
     }
 }

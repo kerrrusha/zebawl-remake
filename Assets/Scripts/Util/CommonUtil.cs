@@ -11,5 +11,13 @@ namespace Assets.Scripts.Util
                 throw new Exception($"You should set the {name} ({name} = null)");
             }
         }
+
+        public static void CheckNotNull(object obj, string name, string originClassName)
+        {
+            if (obj == null)
+            {
+                throw new Exception($"You should set the {name} in {originClassName} ({name} = null)");
+            }
+        }
     }
 }

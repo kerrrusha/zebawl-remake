@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Model;
+using System;
 using System.Collections.Generic;
 
 namespace Assets.Scripts.Service
@@ -27,6 +28,23 @@ namespace Assets.Scripts.Service
                 }
             }
             throw new KeyNotFoundException($"There is not such level with levelName: {levelName}");
+        }
+
+        public Level FindNext(Level current)
+        {
+            List<Level> levels = GetAll();
+            int currentLevelIndex = levels.IndexOf(current);
+
+            if (currentLevelIndex == -1)
+            {
+                throw new KeyNotFoundException($"Current level {current} not found in levels list.");
+            }
+            if (currentLevelIndex == levels.Count - 1)
+            {
+                throw new IndexOutOfRangeException($"Current level {current} is the last one.");
+            }
+
+            return levels[currentLevelIndex + 1];
         }
     }
 }
