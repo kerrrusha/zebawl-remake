@@ -1,0 +1,28 @@
+{
+  "levels": [
+    {
+      "name": "lvl-1",
+      "initialPlayerPosition": {
+        "x": 3.5,
+        "y": 3.4,
+        "z": 14.7
+      }
+    },
+    {
+      "name": "lvl-2",
+      "initialPlayerPosition": {
+        "x": 5.0,
+        "y": 2.0,
+        "z": -3.0
+      }
+    },
+    {
+      "name": "lvl-3",
+      "initialPlayerPosition": {
+        "x": -2.0,
+        "y": 1.0,
+        "z": 4.0
+      }
+    }
+  ]
+}
