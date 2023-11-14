@@ -7,5 +7,10 @@ namespace Assets.Scripts.Model
     {
         public string name;
         public Vector3 initialPlayerPosition;
+
+        public override string ToString()
+        {
+            return $"{{name={name}, initialPlayerPosition={initialPlayerPosition}}}";
+        }
     }
 }

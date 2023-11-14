@@ -39,7 +39,10 @@ public class GameController : MonoBehaviour
 
     private void LoadCurrentScene()
     {
-        SceneManager.LoadScene(currentLevel.name);
+        if (!SceneManager.GetActiveScene().name.Equals(currentLevel.name))
+        {
+            SceneManager.LoadScene(currentLevel.name);
+        }
         playerTransform.position = currentLevel.initialPlayerPosition;
     }
 
