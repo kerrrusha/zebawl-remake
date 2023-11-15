@@ -3,16 +3,18 @@ using UnityEngine;
 
 public class TileTemporaryController : MonoBehaviour
 {
-    public int waitBeforeFall = 2;
+    public int waitBeforeFall = 1;
     public int respawnAfter = 3;
 
     private Rigidbody rb;
     private Vector3 initialPosition;
+    private Quaternion initialRotation;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         initialPosition = transform.position;
+        initialRotation = transform.rotation;
 
         MakeNotMovable();
     }
@@ -49,5 +51,6 @@ public class TileTemporaryController : MonoBehaviour
         yield return new WaitForSeconds(respawnAfter);
         MakeNotMovable();
         transform.position = initialPosition;
+        transform.rotation = initialRotation;
     }
 }

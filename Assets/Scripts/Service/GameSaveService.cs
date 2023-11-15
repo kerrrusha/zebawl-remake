@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Entity;
+using Assets.Scripts.Model;
 using Assets.Scripts.Repository;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,11 @@ namespace Assets.Scripts.Service
         public GameSaveService()
         {
             gameSaveRepository = new GameSaveRepository();
+        }
+
+        public void Add(Level level)
+        {
+            Add(level.name);
         }
 
         public void Add(string levelName)

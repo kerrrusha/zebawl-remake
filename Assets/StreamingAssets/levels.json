@@ -3,17 +3,17 @@
     {
       "name": "lvl-1",
       "initialPlayerPosition": {
-        "x": 3.5,
-        "y": 3.4,
-        "z": 14.7
+        "x": -91.2,
+        "y": -11.9,
+        "z": -117.9
       }
     },
     {
       "name": "lvl-2",
       "initialPlayerPosition": {
-        "x": 1.8,
-        "y": -1.4,
-        "z": -1
+        "x": 57.3,
+        "y": 20.1,
+        "z": 77.8
       }
     }
   ]
