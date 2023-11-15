@@ -5,13 +5,14 @@ public class PlayerController : MonoBehaviour
 {
     public float moveForce = 3.0f;
     public float maxSpeed = 3.0f;
-    public Transform cameraTransform;
 
+    private Transform cameraTransform;
     private Rigidbody rb;
     private Vector3 cameraPlayerPositionDelta;
 
     void Start()
     {
+        cameraTransform = GameObject.FindWithTag("MainCamera").transform;
         CommonUtil.CheckNotNull(cameraTransform, nameof(cameraTransform));
 
         rb = GetComponent<Rigidbody>();
